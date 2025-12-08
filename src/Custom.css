@@ -1,0 +1,12 @@
+/* ADDITIONAL */
+
+summary::marker {
+  content: "";
+}
+
+details[open] summary::before {
+  background: linear-gradient(#fff 0 0) 50%/100% 25% no-repeat;
+}
+details[open] summary {
+  border-radius: 5px 5px 0 0;
+}
