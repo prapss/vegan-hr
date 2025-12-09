@@ -7,7 +7,9 @@ import {
   Shrub,
   ChevronDown,
   ArrowRight,
+  Sparkles,
 } from "lucide-react";
+import ExpandableCard from "../components/ExpandableCard";
 
 function Card({ title, value, icon = null }: { title: string; value: string; icon?: any}) {
   const [flash, setFlash] = useState(false);
@@ -25,91 +27,13 @@ function Card({ title, value, icon = null }: { title: string; value: string; ico
   return (
     <div
       onClick={copyValue}
-      className={`cursor-pointer flex gap-3 p-4 rounded-xl border border-white/5 bg-secondary-900/40 backdrop-blur-sm shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl ${
+      className={`cursor-pointer flex gap-3 p-4 rounded-xl border border-white/5 bg-card backdrop-blur-sm shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl ${
         flash ? "shadow-green-500/40" : ""
       }`}
     >
       <div className="flex-1">
         <h2 className="text-sm font-semibold leading-tight mb-1">{title}</h2>
         <p className="text-md">{value}</p>
-      </div>
-    </div>
-  );
-}
-
-function ExpandableCard({
-  title,
-  content,
-  icon: Icon,
-  index,
-  references = null,
-}: {
-  title: string;
-  content: string;
-  icon: any;
-  index: number;
-  references?: { text: string; link?: string }[] | null;
-}) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div
-      className="group border-2 border-border rounded-xl overflow-hidden bg-card hover:border-primary/70 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500 animate-fade-in-up hover:scale-[1.02]"
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 transition-all duration-300"
-      >
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-            <Icon
-              className={
-                "w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300 ${principle.color}"
-              }
-            />
-          </div>
-          <h3 className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">
-            {title}
-          </h3>
-        </div>
-        <ChevronDown
-          className={`w-5 h-5 text-muted-foreground group-hover:text-primary transition-all duration-500 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        />
-      </button>
-      <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="px-6 pb-5 pt-2">
-          {" "}
-          {/*bg-gradient-to-br from-primary/5 to-accent/5*/}
-          <p className="text-gray-800 leading-relaxed">{content}</p>
-          {references && (
-            <div className="mt-4">
-              <h4 className="font-semibold text-gray-800 mb-2">Reference:</h4>
-              <ul className="list-disc list-inside text-gray-600">
-                {references.map((ref, refIndex) => (
-                  <li key={refIndex}>
-                    {ref.link && (
-                      <a
-                        href={ref.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-green-600 hover:underline"
-                      >
-                        {ref.text}
-                      </a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );
@@ -239,7 +163,7 @@ const Veganism = () => {
             otkrijte kako možete živjeti u skladu sa svojim vrijednostima.
           </p> */}
         </div>
-        <p className="text-l text-gray-800 mx-5 leading-relaxed mb-6">
+        <p className="text-lg  max-w-4xl mx-auto leading-relaxed mb-6">
           {definition}
         </p>
 
@@ -274,31 +198,32 @@ const Veganism = () => {
               Click each card to discover why this moment matters
             </p> */}
             </div>
-            <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20">
+            {/* <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20">
               <div className="container mx-auto px-1 py-2 ">
                 <div className="max-w-4xl mx-auto text-center space-y-6">
-                  {/* <div className="inline-flex items-center gap-2 px-4 py-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 text-primary text-sm font-medium mb-4 animate-fade-in-up shadow-lg shadow-primary/20">
+                  <div className="inline-flex items-center gap-2 px-4 py-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 text-primary text-sm font-medium mb-4 animate-fade-in-up shadow-lg shadow-primary/20">
               <Sparkles className="w-4 h-4 animate-pulse" />
               <span>Welcome to Your Journey</span>
             </div>
-             */}
+            
                 </div>
               </div>
 
               <div className="absolute top-20 left-10 w-40 h-40 bg-primary/30 rounded-full blur-3xl animate-float" />
               <div className="absolute bottom-20 right-10 w-48 h-48 bg-accent/30 rounded-full blur-3xl animate-float [animation-delay:2s]" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-glow" />
-            </section>
+            </section> */}
 
             <div className="space-y-4">
               {principles.map((principle, index) => (
                 <ExpandableCard
                   key={index + 1}
-                  content={principle.description}
+                  index={index}
+                  fullDescription={principle.description}
+                  shortDescription={principle.shortDescription}
                   references={principle.references}
                   title={principle.title}
                   icon={principle.icon}
-                  index={index}
                 />
               ))}
             </div>
@@ -371,7 +296,7 @@ const Veganism = () => {
         
 
         {/* CTA Section */}
-        <section className="container mx-auto px-4 py-16 md:py-24">
+        <section className="container mx-auto px-4 py-4 md:py-8">
           <div className="max-w-4xl mx-auto text-center space-y-6 p-8 md:p-12 rounded-2xl 
           border-2 border-primary/30 shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/50 backdrop-blur-lg">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-balance">Zbog koga?</h2>

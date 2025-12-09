@@ -24,7 +24,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2 text-2xl font-bold text-emerald-700 hover:text-emerald-500 transition-colors">
-            <Leaf className="h-8 w-8" />
+            <Leaf className="h-8 w-8 animate-pulse" />
             <span>
                           <h1 className="font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 dark:from-emerald-400 dark:via-green-400 dark:to-lime-400 bg-clip-text text-transparent drop-shadow-sm">
                 Vegan.hr
