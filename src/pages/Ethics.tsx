@@ -5,6 +5,8 @@ import LinkToHomeCard from '../components/LinkToHomeCard';
 import pigletsImg from '../assets/img/piglets.jpg';
 import animalEmotionsImage from '../assets/img/animal-emotions-640.jpg';
 import polutionImg from '../assets/img/pollution_1280.jpg';
+import fieldsImg from '../assets/img/fields.jpg';
+import pigMarkedImg from '../assets/img/pig-marked_1280.jpg';
 
 const Ethics = () => {
   const animalsAndEmotions = [
@@ -102,6 +104,11 @@ const Ethics = () => {
             <p className="text-lg mb-6">
               Proizvodnja hrane životinjskog porijekla zahtijeva znatno više resursa u usporedbi s biljnom hranom. Preusmjeravanjem žitarica i drugih usjeva koji se koriste za hranu životinja prema ljudskoj prehrani, mogli bismo značajno smanjiti globalnu glad i poboljšati sigurnost hrane.
             </p>
+            <img 
+              src={fieldsImg} 
+              alt="Polja usjeva" 
+              className="rounded-lg shadow-md mb-2 w-full h-64 object-cover"
+            />
             <p className="text-lg mb-6">Veliki udio globalno uzgojenih usjeva koristi se za hranjenje životinja u industrijskom uzgoju, umjesto direktne prehrane ljudi. Prelazak prema biljnoj prehrani mogao bi osloboditi velike količine žitarica, vode i zemlje te doprinijeti smanjenju gladi u svijetu.</p>
           </div>
 
@@ -110,6 +117,14 @@ const Ethics = () => {
             <h3 className="font-heading text-2xl font-bold mb-3">Problematika radnika klaonica</h3>
             <p className="text-lg mb-6">
               Radnici u klaonicama često su izloženi teškim psihičkim i fizičkim uvjetima rada. Mnogi izvještaji govore o visokoj prevalenciji depresije, PTSP-a i dehumanizacije na radnom mjestu. Ključni razlog je izloženost nasilju i strahotama koje su dio svakodnevice klaonice.
+            </p>
+            <img 
+              src={pigMarkedImg}
+              alt="Radnici klaonice" 
+              className="rounded-lg shadow-md mb-2 w-full h-64 object-cover"
+            />
+            <p className="text-lg mb-6">
+              Istraživanja pokazuju da radnici klaonica imaju veću stopu samoubojstava u usporedbi s općom populacijom, što ukazuje na ozbiljan utjecaj koji ovaj posao može imati na mentalno zdravlje.
             </p>
             
           </div>
