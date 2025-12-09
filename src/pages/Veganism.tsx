@@ -8,6 +8,7 @@ import {
   ChevronDown,
   ArrowRight,
   Sparkles,
+  HandHeart,
 } from "lucide-react";
 import ExpandableCard from "../components/ExpandableCard";
 
@@ -32,7 +33,7 @@ function Card({ title, value, icon = null }: { title: string; value: string; ico
       }`}
     >
       <div className="flex-1">
-        <h2 className="text-sm font-semibold leading-tight mb-1">{title}</h2>
+        {/* <h2 className="text-sm font-semibold leading-tight mb-1">{title}</h2> */}
         <p className="text-md">{value}</p>
       </div>
     </div>
@@ -167,26 +168,6 @@ const Veganism = () => {
           {definition}
         </p>
 
-        {/* Hero Section
-        <div className="mb-16 relative rounded-2xl overflow-hidden shadow-2xl">
-          <img
-            src="https://images.pexels.com/photos/2317904/pexels-photo-2317904.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            alt="Životinje u prirodi"
-            className="w-full h-64 md:h-96 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/80 to-blue-600/80 flex items-center justify-center">
-            <div className="text-center text-white">
-              <HandHeart className="h-16 w-16 mx-auto mb-4" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Suosjećanje u akciji
-              </h2>
-              <p className="text-xl max-w-2xl mx-auto">
-                Svaki izbor je prilika za izražavanje naših vrijednosti
-              </p>
-            </div>
-          </div>
-        </div> */}
-
         {/* Ethical Principles Expandable*/}
         <section className="container mx-auto px-4 py-0 md:py-0">
           <div className="max-w-3xl mx-auto space-y-6">
@@ -194,11 +175,13 @@ const Veganism = () => {
               <h2 className="text-3xl font-bold tracking-tight">
                 Dobrobiti veganstva
               </h2>
-              {/* <p className="text-lg text-muted-foreground text-pretty">
+              {/* 
+              <p className="text-lg text-muted-foreground text-pretty">
               Click each card to discover why this moment matters
-            </p> */}
+              </p> */}
             </div>
-            {/* <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20">
+            {/* 
+            <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20">
               <div className="container mx-auto px-1 py-2 ">
                 <div className="max-w-4xl mx-auto text-center space-y-6">
                   <div className="inline-flex items-center gap-2 px-4 py-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 text-primary text-sm font-medium mb-4 animate-fade-in-up shadow-lg shadow-primary/20">
@@ -224,6 +207,7 @@ const Veganism = () => {
                   references={principle.references}
                   title={principle.title}
                   icon={principle.icon}
+                  color={principle.color}
                 />
               ))}
             </div>

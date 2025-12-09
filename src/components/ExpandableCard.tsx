@@ -12,6 +12,7 @@ interface ExpandableCardProps {
   shortDescription: string;
   fullDescription: string;
   icon: React.ComponentType<{ className?: string }>;
+  color: string;
   index: number;
   references?: Reference[] | null;
 }
@@ -21,6 +22,7 @@ export default function ExpandableCard({
   shortDescription,
   fullDescription,
   icon: Icon,
+  color = 'text-primary',
   index,
   references = null,
 }: ExpandableCardProps) {
@@ -38,7 +40,7 @@ export default function ExpandableCard({
       >
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-            <Icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+            <Icon className={`${color} w-6 h-6 group-hover:scale-110 transition-transform duration-300`} />
           </div>
 
           <div>

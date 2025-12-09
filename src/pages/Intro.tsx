@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Link } from 'react-router-dom';
 
 import { ChevronDown, Sparkles, Heart, Leaf, Users, ArrowRight, Info, ShieldCheck, FileText } from "lucide-react"
+import { BicepsFlexed } from 'lucide-react';
 import LinkToHomeCard from '../components/LinkToHomeCard';
 
 const Intro = () => {
@@ -32,7 +33,7 @@ const Intro = () => {
       },
       {
         id: '4',
-        icon: ShieldCheck,
+        icon: BicepsFlexed,
         title: 'Svatko može biti heroj',
         content: 'Naš životni stil utječe ne samo na nas, već i na živote drugih. Veganski stil života može znatno pomoći tebi, životinjama koje svakodnevno pate i planeti Zemlji. Svatko ima priliku postati nečiji heroj.',
       },
