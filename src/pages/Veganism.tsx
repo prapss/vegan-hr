@@ -271,7 +271,7 @@ const Veganism = () => {
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
             Zanimljive činjenice
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">
             {facts.map((fact, index) => (
               <Card key={index} title={fact.title} value={fact.fact} />
             ))}
