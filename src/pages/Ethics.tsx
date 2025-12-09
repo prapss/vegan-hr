@@ -62,17 +62,17 @@ const Ethics = () => {
             </div>
           </div>
 
-          <div className="mb-12">
+          {/* <div className="mb-12">
             <h3 className="font-heading text-2xl font-bold mb-3">{beyondFood[0]}</h3>
             <p className="text-lg mb-6">{beyondFood[1]}</p>
-          </div>
+          </div> */}
 
           <div className="mb-12">
             <h3 className="font-heading text-2xl font-bold mb-3">Korištenje životinja izvan prehrane</h3>
-            <p className="text-lg mb-6">
+            <p className="text-lg mb-3">
               Veganski način života nastoji isključiti sve oblike iskorištavanja životinja, ne samo u prehrani. To uključuje:
             </p>
-            <ul className="list-disc pl-6 space-y-3 mb-6">
+            <ul className="list-disc pl-6 space-y-2 mb-6">
               <li>Izbjegavanje proizvoda testiranih na životinjama (kozmetika, proizvodi za čišćenje)</li>
               <li>Nekorištenje odjeće i obuće životinjskog porijekla (koža, vuna, svila, perje)</li>
               <li>Izbjegavanje zabave koja uključuje životinje (cirkusi sa životinjama, zoološki vrtovi)</li>
@@ -124,8 +124,8 @@ const Ethics = () => {
               alt="Zagađenje okoliša" 
               className="rounded-lg shadow-md mb-2 w-full h-64 object-cover"
             />
-            <p className="text-lg mb-6">Industrijski uzgoj životinja jedan je od najvećih uzroka:</p>
-            <ul className="list-disc pl-6 space-y-3 mb-6">
+            <p className="text-lg mb-3">Industrijski uzgoj životinja jedan je od najvećih uzroka:</p>
+            <ul className="list-disc pl-6 space-y-2 mb-6">
               <li>Emisija stakleničkih plinova, uključujući metan i dušikov oksid.</li>
               <li>Onečišćenja voda: Otpadne vode iz farmi i klaonica često zagađuju lokalne vodne tokove, ugrožavajući ekosustave i ljudsko zdravlje.</li>
               <li>Deforestacije i degradacije tla: Proizvodnja stočne hrane doprinosi deforestaciji i degradaciji tla.</li>
@@ -146,12 +146,12 @@ const Ethics = () => {
             </p>
           </div>
 
-          <div className="mb-12">
+          {/* <div className="mb-12">
             <h3 className="font-heading text-2xl font-bold mb-3">Zaključak</h3>
             <p className="text-lg mb-6">
               Veganstvo predstavlja etički odgovor na patnju životinja, ali i priliku za stvaranje pravednijeg i održivijeg svijeta za sve nas. Kroz informirane izbore i aktivizam, možemo zajedno raditi na izgradnji budućnosti u kojoj su prava i dobrobit svih živih bića poštovana.
             </p>
-          </div>
+          </div> */}
         
 
 
