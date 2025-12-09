@@ -57,7 +57,7 @@ export default function ExpandableCard({
         </div>
 
         <ChevronDown
-          className={`w-5 h-5 text-muted-foreground group-hover:text-primary transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
+          className={`w-5 h-5 min-w-[1.25rem] text-muted-foreground group-hover:text-primary transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
             isOpen ? "rotate-180" : ""
           }`}
           aria-hidden="true"
