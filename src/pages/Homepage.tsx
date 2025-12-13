@@ -1,21 +1,22 @@
 import React from 'react';
+import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
-import { Heart, Leaf, Globe, ChefHat, BookOpen, Lightbulb, ArrowRight, Info, Sparkles, Sprout } from 'lucide-react';
-import img1 from '../assets/img/1.jpg';
-import img2 from '../assets/img/2.jpg';
-import img3 from '../assets/img/3.jpg';
-import img4 from '../assets/img/4.jpg';
-import img5 from '../assets/img/5.jpg';
-import img6 from '../assets/img/6.jpg';
-import img7 from '../assets/img/7.jpg';
-import img8 from '../assets/img/8.jpg';
+import { Heart, Leaf, Globe, ChefHat, Lightbulb, ArrowRight, Info } from 'lucide-react';
+import img1 from '../assets/img/chapter1.jpg';
+import img2 from '../assets/img/chapter2.jpg';
+import img3 from '../assets/img/chapter3.jpg';
+import img4 from '../assets/img/chapter4.jpg';
+import img5 from '../assets/img/chapter5.jpg';
+import img6 from '../assets/img/chapter6.jpg';
+import img7 from '../assets/img/chapter7.jpg';
+import img8 from '../assets/img/chapter8.jpg';
 
 const Homepage = () => {
   const topics = [
     {
       id: 'intro',
       title: 'Zanima te veganstvo?',
-      description: 'Bilo da ste znatiželjni, predani ili negdje između, ovdje počinje vaše putovanje na biljnoj bazi.',
+      description: 'Uvod u svijet suosjećanja i zdravlja.',
       icon: Info,
       image: img1,
       // color: 'from-blue-500 to-indigo-500',
@@ -25,7 +26,7 @@ const Homepage = () => {
     {
       id: 'veganism',
       title: 'Zbog čega',
-      description: 'Razumijte etičke aspekte veganstva i kako možete živjeti u skladu sa svojim vrijednostima.',
+      description: 'Etika, zdravlje i okoliš.',
       icon: Leaf,
       image: img2,
       // color: 'from-blue-500 to-indigo-500',
@@ -34,7 +35,7 @@ const Homepage = () => {
     {
       id: 'ethics',
       title: 'Zbog koga',
-      description: 'Jedna od glavnih motivacija za veganstvo je etički odnos prema životinjama',
+      description: 'Životinje, osjećaji i prava.',
       icon: Leaf,
       image: img3,
       // color: 'from-blue-500 to-indigo-500',
@@ -43,7 +44,7 @@ const Homepage = () => {
     {
       id: 'health',
       title: 'Zdravlje, vitalnost, energija',
-      description: 'Otkrijte kako biljni način života može poboljšati vaše zdravlje, sniziti rizik od bolesti i povećati energiju.',
+      description: 'Nutricionizam i zdravstvene prednosti veganske prehrane.',
       icon: Heart,
       image: img4,
       // color: 'from-red-500 to-pink-500',
@@ -52,7 +53,7 @@ const Homepage = () => {
     {
       id: 'shopping',
       title: 'Gdje kupiti vegansku hranu',
-      description: 'Kupovina veganske hrane u lokalnim trgovinama i online.',
+      description: 'Vodič kroz trgovine u Hrvatskoj.',
       icon: Globe,
       image: img5,
       color: 'from-green-500 to-emerald-500',
@@ -61,7 +62,7 @@ const Homepage = () => {
     {
       id: 'restaurants',
       title: 'Gdje naći veganske restorane',
-      description: 'Otkrijte ukusne i hranjive veganske recepte koji će zadovoljiti sve vaše kulinarske potrebe.',
+      description: 'Vodič kroz veganske restorane u Hrvatskoj.',
       icon: ChefHat,
       image: img6,
       color: 'from-orange-500 to-red-500',
@@ -70,7 +71,7 @@ const Homepage = () => {
       {
       id: 'recipes',
       title: 'Kuhanje',
-      description: 'Naučite ukusne i hranjive veganske recepte koji će zadovoljiti sve vaše kulinarske potrebe.',
+      description: 'Trikovi, zamjene i inspiracija.',
       icon: Lightbulb,
       image: img7,
       color: 'from-yellow-500 to-orange-500',
@@ -89,7 +90,7 @@ const Homepage = () => {
     {
       id: 'beginner-tips',
       title: 'Izazovi i rješenja',
-      description: 'Otkrijte kako možete doprinijeti stvaranju boljeg svijeta za životinje i ljude.',
+      description: 'Rješenja za uobičajene izazove.',
       icon: Lightbulb,
       image: img8,
       // color: 'from-yellow-500 to-orange-500',
@@ -178,29 +179,49 @@ const Homepage = () => {
         </div>
       </section> */}
       
+      <header className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-600 dark:to-emerald-700/70">
+        <Link to="/" className='flex items-center space-x-2 text-2xl font-bold text-emerald-700 hover:text-emerald-500 transition-colors'>
+          <div className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+            <Leaf className="h-8 w-8 animate-pulse text-emerald-700" />
+            <span>
+              <h1 className="font-heading text-2xl font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 dark:from-emerald-300 dark:via-green-300 dark:to-lime-300 bg-clip-text text-transparent drop-shadow-sm">
+                Vegan.hr
+              </h1>
+            </span>
+          </div>
+        </Link>
+      </header>
+
 
 {/* Topics Section */}
 <section className="py-16 px-4 sm:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {topics.map((topic) => {
-        const IconComponent = topic.icon;
-        return (
+      {topics.map((topic, index) => (
+        <motion.div
+          className="group relative bg-white border-2 border-border hover:border-primary rounded-2xl shadow-lg overflow-hidden"
+          key={topic.id}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          whileHover={{ opacity: 1, scale: 1.03, boxShadow: '0 15px 25px rgba(0, 0, 0, 0.3)', transition: { duration: 0.3 } }}
+          transition={{ duration: 0.4, delay: index * 0.05 }}
+          viewport={{ once: true }}
+        >
           <Link
             key={topic.id}
             to={topic.link}
-            className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+            className=""
           >
             {/* Image section */}
             <div className="relative h-56 overflow-hidden">
               <img
                 src={topic.image}
                 alt={topic.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                className="w-full h-full object-cover"
               />
 
               {/* Gradient overlay (for readability) */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent"></div>
 
               {/* Icon (top-left) */}
               {/* <div className="absolute top-4 left-4"> 
@@ -220,26 +241,30 @@ const Homepage = () => {
               </div> */}
 
               {/* Title (bottom-left over image) */}
-              <div className="absolute bottom-4 left-4">
-                <h3 className="text-xl font-bold text-white drop-shadow-md">
+              <div className="absolute bottom-2 left-3">
+                <h3 className="text-xl font-bold text-white drop-shadow-md group-hover:text-accent transition-colors duration-400">
                   {topic.title}
                 </h3>
               </div>
             </div>
 
             {/* Description and link */}
-            <div className="p-6">
+            <div className="p-4">
               <p className="text-gray-600 mb-4 leading-relaxed">
                 {topic.description}
               </p>
-              <div className="flex items-center text-emerald-600 font-semibold group-hover:text-emerald-700 transition-colors">
-                <span>Saznajte više</span>
-                <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center items-end text-emerald-600 font-semibold group-hover:text-emerald-700 transition-colors group-hover:translate-x-1 transition-transform duration-400">
+                {/* <span>Saznajte više</span> */}
+                {/* <ArrowRight className="h-4 w-4 ml-2 group-hover:animate-pulse" /> */}
+              </div>
+              <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0">
+                <ArrowRight className="text-primary h-5 w-5" />
               </div>
             </div>
           </Link>
-        );
-      })}
+          </motion.div>
+        )
+      )}
     </div>
   </div>
 </section>

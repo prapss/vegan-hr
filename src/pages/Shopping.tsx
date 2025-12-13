@@ -1,8 +1,12 @@
 import React from 'react';
-import { Zap, Shield, Brain, Bone, Heart, Plus } from 'lucide-react';
+import chapterImage from '../assets/img/chapter5.jpg';
+import nextChapterImage from '../assets/img/chapter6.jpg';
+import { Zap, Shield, Brain, Bone, Heart, Plus, Leaf } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { HeadingImage } from '../components/HeadingImage';
 
 const Shopping = () => {
-
+  const title = 'Gdje kupiti vegansku hranu?'
   const mealPlan = [
     {
       meal: 'Doručak',
@@ -27,13 +31,28 @@ const Shopping = () => {
   ];
 
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen">
+            <header className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-600 dark:to-emerald-700/70">
+        <Link to="/" className='flex items-center space-x-2 text-2xl font-bold text-emerald-700 hover:text-emerald-500 transition-colors'>
+          <div className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+            <Leaf className="h-8 w-8 animate-pulse text-emerald-700" />
+            <span>
+              <h1 className="font-heading text-2xl font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 dark:from-emerald-300 dark:via-green-300 dark:to-lime-300 bg-clip-text text-transparent drop-shadow-sm">
+                Vegan.hr
+              </h1>
+            </span>
+          </div>
+        </Link>
+      </header>
+
+      <main className="flex-1 container max-w-4xl mx-auto p-4 md:p-8 flex flex-col gap-8">
+
+            <HeadingImage image={chapterImage} title={title} />
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          {/* <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
             Gdje kupiti vegansku hranu
-          </h1>
+          </h1> */}
           {/* <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Naučite kako osigurati sve potrebne hranjive tvari kroz raznovrsnu 
             i uravnoteženu biljnu prehranu.
@@ -189,8 +208,8 @@ const Shopping = () => {
             Počnite zdravi plan
           </a>
         </div>
+    </main>
       </div>
-    </div>
   );
 };
 

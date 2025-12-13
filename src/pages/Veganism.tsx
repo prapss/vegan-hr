@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Heart,
   Shield,
@@ -9,10 +10,29 @@ import {
   ArrowRight,
   Sparkles,
   HandHeart,
+  Leaf,
 } from "lucide-react";
 import ExpandableCard from "../components/ExpandableCard";
+import UltraModernCTA, {
+  CTASectionGlass,
+  CTASectionNeon,
+  CTASectionSplit,
+  CTASectionUltraFlat,
+} from "../components/UltraCTA";
+import headingImage from "../assets/img/chapter2.jpg";
+import nextChapterImage from "../assets/img/chapter3.jpg";
+import { StoryLayout } from "../components/StoryLayout";
+import { HeadingImage } from "../components/HeadingImage";
 
-function Card({ title, value, icon = null }: { title: string; value: string; icon?: any}) {
+function Card({
+  title,
+  value,
+  icon = null,
+}: {
+  title: string;
+  value: string;
+  icon?: any;
+}) {
   const [flash, setFlash] = useState(false);
 
   const copyValue = async () => {
@@ -28,8 +48,7 @@ function Card({ title, value, icon = null }: { title: string; value: string; ico
   return (
     <div
       onClick={copyValue}
-      className={`cursor-pointer flex gap-3 p-4 rounded-xl border border-white/5 bg-card backdrop-blur-sm shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl ${
-        flash ? "shadow-green-500/40" : ""
+      className={`break-inside-avoid p-4 rounded-xl border border-white/5 bg-card backdrop-blur-sm shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl shadow-green-500/40"
       }`}
     >
       <div className="flex-1">
@@ -47,7 +66,7 @@ const Veganism = () => {
       title: "Poštivanje životinja",
       // description: 'Svaka životinja ima pravo na život bez patnje i eksploatacije.',
       shortDescription:
-        "Veganstvo je način života baziran na empatiji, ljubavi i poštivanju svih živih bića...",
+        "Veganstvo je način života baziran na empatiji, ljubavi i poštivanju svih živih bića.",
       description:
         "Veganstvo je način života baziran na empatiji, ljubavi i poštivanju svih živih bića. Svjestan izbor da živimo tako da ne nanosimo patnju i ne iskorištavamo životinje ni za hranu, ni za odjeću, kozmetiku, zabavu ili bilo koju drugu svrhu. Biti vegan znači gledati svijet očima suosjećanja i prepoznati da svaka životinja ima svoju osobnost, osjećaje i pravo na život bez straha i patnje. Veganstvo nije samo prehrana, nego način života koji uključuje etiku, zdravlje i brigu za planet.",
       icon: Heart,
@@ -57,7 +76,7 @@ const Veganism = () => {
       title: "Zdravlje",
       // description: 'Biljna prehrana može transformirati vaše zdravlje i donijeti vam dugoročne koristi za cijeli organizam.',
       shortDescription:
-        "Brojna istraživanja pokazuju da pravilno planirana veganska prehrana može zadovoljiti sve nutritivne potrebe...",
+        "Brojna istraživanja pokazuju da pravilno planirana veganska prehrana može zadovoljiti sve nutritivne potrebe.",
       description:
         "Biljna prehrana je bogata vitaminima, mineralima, vlaknima i antioksidansima koji čiste organizam i jačaju naš imunološki sustav. Brojna istraživanja pokazuju da veganska prehrana može smanjiti rizik od srčanih bolesti, dijabetesa tipa 2, pretilosti i određenih vrsta raka. Mnogi vegani primjećuju da imaju više energije, bolju probavu, čišću kožu i osjećaj lakoće u tijelu. Vodeće svjetske nutricionističke organizacije (Academy of Nutrition and Dietetics, British Dietetic Association, German Nutrition Society, Italian Society of Human Nutrition, Association Végétarienne de France) smatraju da su pravilno planirane vegetarijanske i veganske prehrane zdrave, nutritivno adekvatne i mogu pružiti zdravstvene dobrobiti u prevenciji i tretmanu određenih bolesti.",
       references: [
@@ -91,7 +110,8 @@ const Veganism = () => {
     },
     {
       title: "Okoliš",
-      shortDescription: "Veganskim načinom života štitimo šume, oceane...",
+      shortDescription:
+        "Prelaskom na vegansku prehranu smanjujemo naš ekološki otisak, čuvamo prirodne resurse i pomažemo u borbi protiv klimatskih promjena.",
       description:
         "Mesna i mliječna industrija je jedna od glavnih uzroka krčenja šuma, gubitka bioraznolikosti, zagađenja voda i emisija stakleničkih plinova. Prelaskom na vegansku prehranu smanjujemo naš ekološki otisak, čuvamo prirodne resurse i pomažemo u borbi protiv klimatskih promjena. Veganstvo nije samo osobni izbor, već i čin odgovornosti prema planetu i budućim generacijama.",
       // description: 'Mesna i mliječna industrija je jedna od glavnih uzroka krčenja šuma, emisija stakleničkih plinova i onečišćenja vode. Biljna prehrana koristi znatno manje zemlje, vode i energije, te stvara znatno manje štetnih ugljičnih emisija. Veganskim lifestyleom štitimo šume, oceane i zrak koji svi dišemo. To je najjednostavniji i  najmoćniji način na koji možemo doprinijeti održivoj budućnosti.',
@@ -130,10 +150,6 @@ const Veganism = () => {
       fact: "Krave muzare često završavaju kao meso. Kada im proizvodnja mlijeka padne (oko 5. godine), šalju se na klanje, iako bi mogle prirodno živjeti više od 20 godina.",
     },
     {
-      title: "Meso",
-      fact: "Većina mesa sadrži hormone stresa.",
-    },
-    {
       title: "Genericno",
       fact: "Većina mesa sadrži hormone stresa.",
     },
@@ -151,51 +167,65 @@ const Veganism = () => {
     },
   ];
 
+  const title = "Što je veganstvo?";
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
-            Što je veganstvo
-          </h1>
-          {/* <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Istražite duboke etičke razloge koji pokreću veganski pokret i 
-            otkrijte kako možete živjeti u skladu sa svojim vrijednostima.
-          </p> */}
-        </div>
-        <p className="text-lg  max-w-4xl mx-auto leading-relaxed mb-6">
-          {definition}
-        </p>
+    <>
+      <header className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-600 dark:to-emerald-700/70">
+        <Link to="/" className='flex items-center space-x-2 text-2xl font-bold text-emerald-700 hover:text-emerald-500 transition-colors'>
+          <div className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+            <Leaf className="h-8 w-8 animate-pulse text-emerald-700" />
+            <span>
+              <h1 className="font-heading text-2xl font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 dark:from-emerald-300 dark:via-green-300 dark:to-lime-300 bg-clip-text text-transparent drop-shadow-sm">
+                Vegan.hr
+              </h1>
+            </span>
+          </div>
+        </Link>
+      </header>
 
+      <main className="flex-1 container max-w-4xl mx-auto p-4 md:p-8 flex flex-col gap-8">
+                <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+        <HeadingImage image={headingImage} title={title} />
+
+        {/* Definition Section */}
+        {/* <div className="break-inside-avoid p-4 rounded-xl border border-white/5 bg-card backdrop-blur-sm shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl"> */}
+        {/* <h2 className="text-3xl font-bold tracking-tight text-center mb-2">Definicija</h2>  */}
+          <p className="text-lg  max-w-4xl mx-auto leading-relaxed mt-6">
+            {definition}
+          </p>
+        {/* </div> */}
         {/* Ethical Principles Expandable*/}
-        <section className="container mx-auto px-4 py-0 md:py-0">
+        <section className="container mx-auto px-4 py-0 md:py-0 mb-22 mt-12">
           <div className="max-w-3xl mx-auto space-y-6">
-            <div className="text-center space-y-4 mt-20">
+            <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold tracking-tight">
                 Dobrobiti veganstva
               </h2>
               {/* 
-              <p className="text-lg text-muted-foreground text-pretty">
-              Click each card to discover why this moment matters
-              </p> */}
+                <p className="text-lg text-muted-foreground text-pretty">
+                Click each card to discover why this moment matters
+                </p> */}
             </div>
             {/* 
-            <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20">
-              <div className="container mx-auto px-1 py-2 ">
-                <div className="max-w-4xl mx-auto text-center space-y-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 text-primary text-sm font-medium mb-4 animate-fade-in-up shadow-lg shadow-primary/20">
-              <Sparkles className="w-4 h-4 animate-pulse" />
-              <span>Welcome to Your Journey</span>
-            </div>
-            
-                </div>
+              <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20">
+                <div className="container mx-auto px-1 py-2 ">
+                  <div className="max-w-4xl mx-auto text-center space-y-6">
+                    <div className="inline-flex items-center gap-2 px-4 py-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 text-primary text-sm font-medium mb-4 animate-fade-in-up shadow-lg shadow-primary/20">
+                <Sparkles className="w-4 h-4 animate-pulse" />
+                <span>Welcome to Your Journey</span>
               </div>
+              
+                  </div>
+                </div>
 
-              <div className="absolute top-20 left-10 w-40 h-40 bg-primary/30 rounded-full blur-3xl animate-float" />
-              <div className="absolute bottom-20 right-10 w-48 h-48 bg-accent/30 rounded-full blur-3xl animate-float [animation-delay:2s]" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-glow" />
-            </section> */}
+                <div className="absolute top-20 left-10 w-40 h-40 bg-primary/30 rounded-full blur-3xl animate-float" />
+                <div className="absolute bottom-20 right-10 w-48 h-48 bg-accent/30 rounded-full blur-3xl animate-float [animation-delay:2s]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-glow" />
+              </section> */}
 
             <div className="space-y-4">
               {principles.map((principle, index) => (
@@ -213,93 +243,65 @@ const Veganism = () => {
             </div>
           </div>
         </section>
-
-        {/* Ethical Principles */}
-        <div className="mb-16">
-          {/* <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-            Temelji etičkog razmišljanja
-          </h2> */}
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {principles.map((principle, index) => {
-              const IconComponent = principle.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  <div className="flex items-center mb-4">
-                    <div className="bg-gray-100 rounded-full p-3 mr-4">
-                      <IconComponent className={`h-6 w-6 ${principle.color}`} />
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-800">
-                      {principle.title}
-                    </h3>
-                  </div>
-                  <p className="text-gray-600 leading-relaxed">
-                    {principle.description}
-                  </p>
-                  {principle.references && (
-                    <div className="mt-4">
-                      <h4 className="font-semibold text-gray-800 mb-2">Reference:</h4>
-                      <ul className="list-disc list-inside text-gray-600">
-                        {principle.references.map((ref, refIndex) => (
-                          <li key={refIndex}>
-                            {ref.link && (
-                              <a
-                                href={ref.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-green-600 hover:underline"
-                              >
-                                {ref.text}
-                              </a>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>*/}
-        </div>
-
         {/* Fun Facts Section */}
-        
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-            Zanimljive činjenice
-          </h2>
-          <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">
-            {facts.map((fact, index) => (
-              <Card key={index} title={fact.title} value={fact.fact} />
-            ))}
-          </div>
-        </div>
-        
-
-        {/* CTA Section */}
-        <section className="container mx-auto px-4 py-4 md:py-8">
-          <div className="max-w-4xl mx-auto text-center space-y-6 p-8 md:p-12 rounded-2xl 
-          border-2 border-primary/30 shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/50 backdrop-blur-lg">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-balance">Zbog koga?</h2>
-            <p className="text-lg text-pretty leading-relaxed mb-4">
-              Sljedeća stranica vodi vas kroz etičke razloge zašto veganstvo ima smisla.
-            </p>
-            <Link
-              to="/ethics"
-              className=" inline-flex bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+        <h2 className="text-3xl font-bold mb-8 text-center pt-16">
+          Zanimljive činjenice
+        </h2>
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-2">
+          {facts.map((fact, index) => (
+                        <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              viewport={{ once: true }}
             >
-              Saznaj više
-            </Link>
-          </div>
-        </section>
-    </div>
-  </div>
+            <Card key={index} title={fact.title} value={fact.fact} />
+            </motion.div>
+          ))}
+        </div>
+        </motion.div>
+      </main>
+
+      {/* <CTASectionUltraFlat
+        title={"Pridruži se zajednici!"}
+        description={
+          "Postani dio pokreta za bolje sutra. Pronađi podršku, resurse i inspiraciju na svom veganskom putu."
+        }
+        buttonText="Saznaj više ➔"
+        buttonLink={"/community"}
+      /> */}
+      {/* <CTASectionSplit
+        title={"Spremni za sljedeći korak?"}
+        description={
+          "Istraži zdravstvene aspekte veganstva i kako možeš poboljšati svoje zdravlje."
+        }
+        buttonText="Dalje ➔"
+        buttonLink={"/recipes"}
+        image={nextChapterImage}  
+      /> */}
+      <CTASectionGlass
+        title={"Nastavi svoje putovanje"}
+        description={
+          "Istraži zdravstvene aspekte veganstva i kako možeš poboljšati svoje zdravlje."
+        }
+        buttonText="Dalje ➔"
+        buttonLink={"/ethics"}
+
+      />
+{/* 
+      <CTASectionNeon
+        title={"Istraži više o veganstvu"}
+        description={
+          "Nastavi svoje putovanje i otkrij etičke razloge veganstva."
+        }
+        buttonText="Započni ➔"
+        buttonLink={"/ethics"}
+      /> */}
+
+      
+    </>
   );
 };
 
-
-  export default Veganism;
-
+export default Veganism;

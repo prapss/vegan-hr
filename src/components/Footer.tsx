@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-emerald-700 mt-8 pt-8 text-center text-emerald-200">
-          <p>&copy; 2024 Veganski Portal Hrvatska. Sva prava pridržana.</p>
+          <p>&copy; 2025 Veganski Portal Hrvatska. Sva prava pridržana.</p>
         </div>
       </div>
     </footer>

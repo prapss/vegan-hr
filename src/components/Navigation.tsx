@@ -6,9 +6,9 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  const navItems = [
-    { path: '/', label: 'Početna' },
-    { path: '/', label: 'O nama' },
+  const navItems = [,
+    // { path: '/', label: 'Početna' },
+    // { path: '/', label: 'O nama' },
     // { path: '/zdravlje', label: 'Zdravlje' },
     // { path: '/okolis', label: 'Okoliš' },
     // { path: '/etika', label: 'Etika' },
@@ -26,14 +26,14 @@ const Navigation = () => {
           <Link to="/" className="flex items-center space-x-2 text-2xl font-bold text-emerald-700 hover:text-emerald-500 transition-colors">
             <Leaf className="h-8 w-8 animate-pulse" />
             <span>
-                          <h1 className="font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 dark:from-emerald-400 dark:via-green-400 dark:to-lime-400 bg-clip-text text-transparent drop-shadow-sm">
+              <h1 className="font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 dark:from-emerald-400 dark:via-green-400 dark:to-lime-400 bg-clip-text text-transparent drop-shadow-sm">
                 Vegan.hr
               </h1>
               </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          {/* <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -47,7 +47,7 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
-          </div>
+          </div> */}
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -63,7 +63,7 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-200">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            {/* <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
@@ -78,7 +78,7 @@ const Navigation = () => {
                   {item.label}
                 </Link>
               ))}
-            </div>
+            </div> */}
           </div>
         )}
       </div>

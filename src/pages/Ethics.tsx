@@ -1,14 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import agricultureImg from '../assets/img/agriculture.png'
 import LinkToHomeCard from '../components/LinkToHomeCard';
-import pigletsImg from '../assets/img/piglets.jpg';
-import animalEmotionsImage from '../assets/img/animal-emotions-640.jpg';
+import { HeadingImage } from "../components/HeadingImage";
+import chapterImage from '../assets/img/chapter3.jpg';
+import nextChapterImage from '../assets/img/chapter4.jpg';
+import agricultureImg from '../assets/img/agriculture.png'
 import polutionImg from '../assets/img/pollution_1280.jpg';
+import pigletsImg from '../assets/img/piglets.jpg';
 import fieldsImg from '../assets/img/fields.jpg';
 import pigMarkedImg from '../assets/img/pig-marked_1280.jpg';
+import { ArrowRight, Leaf } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+function EthicsCard({title, description, icon = null}: {title: string; description: string; icon?: any}) {
+  const IconComponent = icon;
+  return (
+    <div
+      className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+    >
+      <div className="flex items-center mb-4">
+        {icon && 
+          <div className="bg-gray-100 rounded-full p-3 mr-4">
+            <IconComponent className={`h-6 w-6 ${'text-accentnice'}`} />
+          </div>
+        }
+        <h3 className="text-xl font-semibold text-gray-800">
+          {title}
+        </h3>
+      </div>
+      <p className="text-gray-600 leading-relaxed">
+        {description}
+      </p>
+    </div>
+  );
+}
 
 const Ethics = () => {
+  const title = "Zbog koga?";
   const animalsAndEmotions = [
     'Životinje imaju svijest i osjećaju bol',
     'Znanstvena istraživanja jasno potvrđuju da mnoge vrste, uključujući domaće i divlje životinje, posjeduju emocije, svijest i sposobnost doživljavanja boli. One osjećaju strah, tugu, radost i stres — baš kao i ljudi. Razumijevanje ovih činjenica mijenja način na koji gledamo na njihove živote i prava.',
@@ -21,25 +49,37 @@ const Ethics = () => {
     'Korištenje životinja izvan prehrane',
     'Veganstvo nije samo prehrambeni izbor; to je etički stav koji se proteže na sve aspekte života. Vegani izbjegavaju proizvode testirane na životinjama, odjeću i obuću životinjskog porijekla, te zabavu koja uključuje iskorištavanje životinja. Ovaj pristup promovira poštovanje prema svim živim bićima i nastoji minimizirati njihovu patnju u svakodnevnom životu.'
   ];
+
     return (
-        <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      
+      <header className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-600 dark:to-emerald-700/70">
+        <Link to="/" className='flex items-center space-x-2 text-2xl font-bold text-emerald-700 hover:text-emerald-500 transition-colors'>
+          <div className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+            <Leaf className="h-8 w-8 animate-pulse text-emerald-700" />
+            <span>
+              <h1 className="font-heading text-2xl font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 dark:from-emerald-300 dark:via-green-300 dark:to-lime-300 bg-clip-text text-transparent drop-shadow-sm">
+                Vegan.hr
+              </h1>
+            </span>
+          </div>
+        </Link>
+      </header>
 
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Zbog koga?
-          </h1>
-          {/* <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Jedna od glavnih motivacija za veganstvo je etički odnos prema životinjama. Veganski način života nastoji minimizirati patnju životinja u svim aspektima ljudskog života.
-          </p> */}
-        </div>
 
-        <div className="max-w-4xl mx-auto">
-          <h2 className='font-heading text-3xl font-bold mb-6'>Životinje</h2>
+      <main className="flex-1 container max-w-4xl mx-auto p-4 md:p-8 flex flex-col gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <HeadingImage image={chapterImage} title={title} />
+          <h2 className='font-heading text-3xl font-bold text-center mt-12 mb-4'>Zbog životinja</h2>
           
+          <div className='mb-12 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300'>
           <h3 className="font-heading text-2xl font-bold mb-3">{animalsAndEmotions[0]}</h3>
           <p className="text-lg mb-4">{animalsAndEmotions[1]}</p>
-          <img src={animalEmotionsImage} alt='' className="rounded-lg shadow-md mb-2 w-full h-64 object-cover"/>
           <p className="text-lg mb-4">
             Cambridge deklaracija o svijesti iz 2012. godine, koju je potpisala skupina prominentnih neuroznanstvenika, potvrđuje da "ne-ljudske životinje imaju svijest" i "sisavci i ptice, te mnoga druga bića, uključujući hobotnice" posjeduju neurološke supstrate koji generiraju svijest.
           </p>
@@ -48,10 +88,11 @@ const Ethics = () => {
               "Životinje nisu strojevi - one su živa bića s vlastitim životima, interesima i kapacitetom za patnju. Ako možemo živjeti zdrav život bez nanošenja nepotrebne štete drugim bićima, zašto to ne bismo učinili?"
             </p>
           </div>
+          </div>
 
-          <h3 className="font-heading text-2xl font-bold mb-3">{animalsInAgriculture[0]}</h3>
-          <p className="text-lg mb-6">{animalsInAgriculture[1]}</p>
-          <div className="mb-12">
+          <div className="mb-12 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 className="font-heading text-2xl font-bold mb-3">{animalsInAgriculture[0]}</h3>
+            <p className="text-lg mb-6">{animalsInAgriculture[1]}</p>
             <div className="mb-6">
               <img 
                 src={agricultureImg} 
@@ -69,7 +110,7 @@ const Ethics = () => {
             <p className="text-lg mb-6">{beyondFood[1]}</p>
           </div> */}
 
-          <div className="mb-12">
+          <div className="mb-12 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <h3 className="font-heading text-2xl font-bold mb-3">Korištenje životinja izvan prehrane</h3>
             <p className="text-lg mb-3">
               Veganski način života nastoji isključiti sve oblike iskorištavanja životinja, ne samo u prehrani. To uključuje:
@@ -85,7 +126,7 @@ const Ethics = () => {
             </p>
           </div>
 
-          <div className="mb-12">
+          <div className="mb-12 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <h3 className="font-heading text-2xl font-bold mb-3">Životinje u utočištima</h3>
             <img 
               src={pigletsImg} 
@@ -98,8 +139,8 @@ const Ethics = () => {
           </div>
 
 
-          <h2 className='font-heading text-3xl font-bold mb-6'>Ljudi</h2>
-          <div className="mb-12">
+          <h2 className='font-heading text-3xl font-bold mb-6 text-center'>Zbog ljudi</h2>
+          <div className="mb-12 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <h3 className="font-heading text-2xl font-bold mb-3">Glad u svijetu</h3>
             <p className="text-lg mb-6">
               Proizvodnja hrane životinjskog porijekla zahtijeva znatno više resursa u usporedbi s biljnom hranom. Preusmjeravanjem žitarica i drugih usjeva koji se koriste za hranu životinja prema ljudskoj prehrani, mogli bismo značajno smanjiti globalnu glad i poboljšati sigurnost hrane.
@@ -112,8 +153,7 @@ const Ethics = () => {
             <p className="text-lg mb-6">Veliki udio globalno uzgojenih usjeva koristi se za hranjenje životinja u industrijskom uzgoju, umjesto direktne prehrane ljudi. Prelazak prema biljnoj prehrani mogao bi osloboditi velike količine žitarica, vode i zemlje te doprinijeti smanjenju gladi u svijetu.</p>
           </div>
 
-          <div className="mb-12">
-
+          <div className="mb-12 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <h3 className="font-heading text-2xl font-bold mb-3">Problematika radnika klaonica</h3>
             <p className="text-lg mb-6">
               Radnici u klaonicama često su izloženi teškim psihičkim i fizičkim uvjetima rada. Mnogi izvještaji govore o visokoj prevalenciji depresije, PTSP-a i dehumanizacije na radnom mjestu. Ključni razlog je izloženost nasilju i strahotama koje su dio svakodnevice klaonice.
@@ -129,7 +169,7 @@ const Ethics = () => {
             
           </div>
 
-          <div className="mb-12">
+          <div className="mb-12 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <h3 className="font-heading text-2xl font-bold mb-3">Zagađenje</h3>
             <p className="text-lg mb-6">
               Industrijsko stočarstvo značajan je izvor zagađenja zraka, vode i tla. Emisije stakleničkih plinova iz poljoprivrednog sektora, uključujući metan iz stoke, doprinose klimatskim promjenama. Prelazak na biljnu prehranu može smanjiti ekološki otisak hrane i pomoći u očuvanju okoliša za buduće generacije.
@@ -154,7 +194,7 @@ const Ethics = () => {
 
           </div>
 
-          <div className="mb-12">
+          <div className="mb-12 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <h3 className="font-heading text-2xl font-bold mb-3">Utjecaj na agresivnost</h3>
             <p className="text-lg mb-6">
               Kontakt s nasiljem, bilo direktan (rad u klaonici) ili indirektan (normalizacija nasilja nad životinjama), može povećati toleranciju prema agresiji. Neka istraživanja ukazuju da radnici klaonica statistički imaju višu stopu nasilnih incidenata u zajednici, što pokazuje kompleksnu povezanost između nasilja nad životinjama i društvene agresivnosti.
@@ -183,7 +223,6 @@ deforestacije zbog stvaranja pašnjaka ili polja za uzgoj stočne hrane. */}
 
 
           
-        </div>
 
 
 
@@ -207,7 +246,7 @@ deforestacije zbog stvaranja pašnjaka ili polja za uzgoj stočne hrane. */}
 
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
+      <section className="container max-w-3xl space-y-6 mx-auto py-16 md:py-24">
         <div className="bg-gradient-to-r from-emerald-600 to-green-600 rounded-2xl p-8 text-center text-white">
           <h2 className="text-3xl font-bold mb-4">
             Kako veganstvo utječe na naše zdravlje?
@@ -215,12 +254,10 @@ deforestacije zbog stvaranja pašnjaka ili polja za uzgoj stočne hrane. */}
           <p className="text-xl mb-6 max-w-2xl mx-auto">
             Otkrij zdravstvene koristi veganstva i kako može poboljšati tvoje zdravlje.
           </p>
-          <a
-            href="/health"
-            className="bg-white text-emerald-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-50 transition-all duration-300 transform hover:scale-105 shadow-lg inline-block"
-          >
-            Saznaj više
-          </a>
+          <Link to="/health" className='bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-50 transition-all duration-300 transform hover:scale-105 shadow-lg inline-block'>
+            Dalje
+            <ArrowRight className="inline text-xl text-primary h-5 w-5 ml-1" />
+          </Link>
         </div>
       </section>
       
@@ -236,8 +273,11 @@ deforestacije zbog stvaranja pašnjaka ili polja za uzgoj stočne hrane. */}
                       >Kako mogu pomoći?</Link>
         </div>
       </section> */}
-        
+        </motion.div>
+    </main>
     </div>
+
+    
   );
 };
 

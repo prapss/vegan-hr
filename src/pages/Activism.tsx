@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import chapterImage from '../assets/img/chapter7.jpg';
+import nextChapterImage from '../assets/img/chapter8.jpg';
+
 import agricultureImg from '../assets/img/agriculture.png'
 import LinkToHomeCard from '../components/LinkToHomeCard';
 

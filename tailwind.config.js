@@ -35,6 +35,10 @@ export default {
           DEFAULT: "var(--accent)",
           foreground: "var(--accent-foreground)",
         },
+        accentnice: {
+          DEFAULT: "var(--accentnice)",
+          foreground: "var(--accentnice-foreground)",
+        },
         destructive: {
           DEFAULT: "var(--destructive)",
           foreground: "var(--destructive-foreground)",

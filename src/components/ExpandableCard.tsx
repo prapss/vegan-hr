@@ -30,7 +30,7 @@ export default function ExpandableCard({
 
   return (
     <div
-      className="group border-2 border-border rounded-xl overflow-hidden bg-card hover:border-primary/70 hover:shadow-xl hover:shadow-primary/20 transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:scale-[1.02]"
+      className="group border-2 border-green-500/50 rounded-xl overflow-hidden bg-card hover:border-accentnice hover:shadow-xl hover:shadow-primary/20 transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:scale-[1.02]"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <button
@@ -39,8 +39,8 @@ export default function ExpandableCard({
         aria-expanded={isOpen}
       >
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-            <Icon className={`${color} w-6 h-6 group-hover:scale-110 transition-transform duration-300`} />
+          <div className="w-12 h-12 min-w-[3rem] min-h-[3rem] rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+            <Icon className={`${color} group-hover:scale-110 transition-transform duration-300`} />
           </div>
 
           <div>

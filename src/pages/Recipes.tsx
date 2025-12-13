@@ -1,9 +1,15 @@
 // import React from 'react';
+import { Link } from 'react-router-dom';
+import chapterImage from '../assets/img/chapter6.jpg';
+import nextChapterImage from '../assets/img/chapter7.jpg';
 import { 
   // ChefHat,
-   Clock, Users, Star, Heart } from 'lucide-react';
+   Clock, Users, Star, Heart, 
+   Leaf} from 'lucide-react';
+import { HeadingImage } from '../components/HeadingImage';
 
 const Recipes = () => {
+  const title = 'Kuhanje'
   const featuredRecipes = [
     {
       title: 'Veganska ragu pasta',
@@ -110,18 +116,22 @@ const Recipes = () => {
   ];
 
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Veganski recepti
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Otkrijte ukusne, hranjive i jednostavne veganske recepte koji će 
-            zadovoljiti sve vaše kulinarske potrebe.
-          </p>
-        </div>
+      <header className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-600 dark:to-emerald-700/70">
+        <Link to="/" className='flex items-center space-x-2 text-2xl font-bold text-emerald-700 hover:text-emerald-500 transition-colors'>
+          <div className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+            <Leaf className="h-8 w-8 animate-pulse text-emerald-700" />
+            <span>
+              <h1 className="font-heading text-2xl font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 dark:from-emerald-300 dark:via-green-300 dark:to-lime-300 bg-clip-text text-transparent drop-shadow-sm">
+                Vegan.hr
+              </h1>
+            </span>
+          </div>
+        </Link>
+      </header>
+      <main className="flex-1 container max-w-4xl mx-auto p-4 md:p-8 flex flex-col gap-8">
+      <HeadingImage image={chapterImage} title={title} />
 
         {/* Hero Section */}
         {/* <div className="mb-16 relative rounded-2xl overflow-hidden shadow-2xl">
@@ -283,8 +293,8 @@ const Recipes = () => {
             Pročitaj više
           </a>
         </div>
-      </div>
 
+    </main>
     </div>
   );
 };
