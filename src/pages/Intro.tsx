@@ -19,6 +19,7 @@ import LinkToHomeCard from "../components/LinkToHomeCard";
 import headingImage from "../assets/img/chapter1.jpg";
 import { HeadingImage } from "../components/HeadingImage";
 import { motion } from "framer-motion";
+import { CTAClean } from "../components/UltraCTA";
 
 const Intro = () => {
   const welcomeCards = [
@@ -110,21 +111,25 @@ const Intro = () => {
 
   const title = "Dobrodošao/la!";
   return (
-    <div className="min-h-screen">
+    <div className="bg-gradient-to-b from-green-50 to-green-50">
       {/* Hero Section */}
-      <header className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-600 dark:to-emerald-700/70">
-        <Link to="/">
-          <div className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
-            <Leaf className="h-6 w-6 text-primary animate-pulse text-emerald-700" />
-            <span>
-              <h1 className="font-heading text-2xl font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 dark:from-emerald-300 dark:via-green-300 dark:to-lime-300 bg-clip-text text-transparent drop-shadow-sm">
-                Vegan.hr
-              </h1>
-            </span>
-          </div>
-        </Link>
-      </header>
+      <header className="">
+        <div className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-500/70 dark:to-lime-700/70">
+          <Link to="/">
+            <div className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+              <Leaf className="h-6 w-6 text-primary animate-pulse text-emerald-700" />
+              <span>
+                <h1 className="font-heading text-2xl font-bold bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 dark:from-emerald-300 dark:via-green-300 dark:to-lime-300 bg-clip-text text-transparent drop-shadow-sm">
+                  Vegan.hr
+                </h1>
+              </span>
+            </div>
+          </Link>
+        </div>
 
+        <HeadingImage image={headingImage} title={title} />
+
+      </header>
 
       <main className="flex-1 container max-w-4xl mx-auto p-4 md:p-8 flex flex-col gap-8">
         <motion.div
@@ -132,38 +137,43 @@ const Intro = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-        <HeadingImage image={headingImage} title={title} />
-        {/* Expandable Cards Section */}
-        <section className="container mx-auto px-4 py-0 md:py-0">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20">
-              <div className="container mx-auto px-1 py-2 ">
-                <div className="max-w-4xl mx-auto text-center space-y-6">
-                  {/* <div className="inline-flex items-center gap-2 px-4 py-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 text-primary text-sm font-medium mb-4 animate-fade-in-up shadow-lg shadow-primary/20">
+          {/* Expandable Cards Section */}
+          <motion.section
+            className="container mx-auto px-4 py-0 md:py-0"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <div className="max-w-3xl mx-auto space-y-6 mb-16">
+              <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20 mt-6">
+                <div className="container mx-auto px-1">
+                  <div className="max-w-4xl mx-auto text-center space-y-6">
+                    {/* <div className="inline-flex items-center gap-2 px-4 py-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 text-primary text-sm font-medium mb-4 animate-fade-in-up shadow-lg shadow-primary/20">
               <Sparkles className="w-4 h-4 animate-pulse" />
               <span>Welcome to Your Journey</span>
             </div>
              */}
+                  </div>
                 </div>
+
+                <div className="absolute top-20 left-10 w-40 h-40 bg-primary/30 rounded-full blur-3xl animate-float" />
+                <div className="absolute bottom-20 right-10 w-48 h-48 bg-accent/30 rounded-full blur-3xl animate-float [animation-delay:2s]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-glow" />
+              </section>
+
+              <div className="space-y-4">
+                {welcomeCards.map((card, index) => (
+                  <ExpandableCard key={card.id} {...card} index={index} />
+                ))}
               </div>
-
-              <div className="absolute top-20 left-10 w-40 h-40 bg-primary/30 rounded-full blur-3xl animate-float" />
-              <div className="absolute bottom-20 right-10 w-48 h-48 bg-accent/30 rounded-full blur-3xl animate-float [animation-delay:2s]" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-glow" />
-            </section>
-
-            <div className="space-y-4">
-              {welcomeCards.map((card, index) => (
-                <ExpandableCard key={card.id} {...card} index={index} />
-              ))}
             </div>
-          </div>
-        </section>
+          </motion.section>
 
-        {/* <LinkToHomeCard path='/etika' /> */}
+          {/* <LinkToHomeCard path='/etika' /> */}
 
-        {/* CTA Section */}
-        <section className="container max-w-3xl space-y-6 mx-auto mt-16">
+          {/* CTA Section */}
+          {/* <section className="container max-w-3xl space-y-6 mx-auto mt-16">
           <div className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-600 rounded-2xl p-8 text-center text-white">
             <h2 className="text-3xl font-bold mb-4">Što je veganstvo?</h2>
             <p className="text-xl mb-6 max-w-2xl mx-auto">
@@ -178,9 +188,9 @@ const Intro = () => {
               <ArrowRight className="inline text-xl text-primary h-5 w-5 ml-1" />
             </Link>
           </div>
-        </section>
+        </section> */}
 
-        {/* <section className="container mx-auto px-4 py-16 md:py-24">
+          {/* <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center space-y-6 p-8 md:p-12 rounded-2xl 
         border-2 border-primary/30 shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/50 backdrop-blur-lg">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-balance">Što je veganstvo?</h2>
@@ -199,8 +209,20 @@ const Intro = () => {
           </Link>
         </div>
       </section> */}
-      </motion.div>
+        </motion.div>
       </main>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <CTAClean
+          title="Što je veganstvo?"
+          description="Upoznaj se sa dobrobitima koje veganstvo donosi tebi i svijetu oko tebe."
+          buttonLink="/veganism"
+        />
+      </motion.div>
     </div>
   );
 };

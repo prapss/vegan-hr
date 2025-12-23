@@ -117,8 +117,8 @@ export function CTASectionNeon({title, description, buttonText, buttonLink}: { t
 // Variant 7: Glassmorphism CTA
 export function CTASectionGlass({title, description, buttonText, buttonLink}: { title: string; description: string; buttonText: string; buttonLink: string;  }){
   return (
-    <div className="p-10 flex justify-center bg-gradient-to-br from-green-100 to-green-300/40">
-      <div className="backdrop-blur-xl bg-white/30 border border-white/40 rounded-3xl shadow-xl p-10 text-center max-w-lg">
+    <div className="p-10 flex justify-center  bg-white">
+      <div className="backdrop-blur-xl border border-white/40 bg-gradient-to-br from-green-400/10 via-emerald-300/10 to-green-400/10 rounded-3xl shadow-xl p-10 text-center max-w-lg">
         <h2 className="text-3xl font-bold text-green-700 mb-4">
           {title}
         </h2>
@@ -131,6 +131,30 @@ export function CTASectionGlass({title, description, buttonText, buttonLink}: { 
         </Link>
       </div>
     </div>
+  );
+}
+
+
+export function CTAClean({title, description, buttonLink}: { title: string; description: string; buttonLink: string;  }){
+  return (
+    
+                  <section className=" space-y-6 w-full">
+                    <div className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-600 p-8 text-center text-white">
+                      <h2 className="text-3xl font-bold mb-4">{title}</h2>
+                      <p className="text-xl mb-6 max-w-2xl mx-auto">
+                        {description}
+                      </p>
+                      <Link
+                        to={buttonLink}
+                        className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-50 transition-all duration-300 transform hover:scale-105 shadow-lg inline-block"
+                      >
+                        Dalje
+                        <ArrowRight className="inline text-xl text-primary h-5 w-5 ml-1" />
+                      </Link>
+
+
+                    </div>
+                  </section>
   );
 }
 
@@ -151,7 +175,8 @@ export function CTASectionUltraFlat({title, description, buttonText, buttonLink}
           {description || "A clean and minimal call-to-action section with ultra-flat design principles."}
         </p>
         <SafeButton className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-md">
-          {buttonText || "Continue"} <TextArrow />
+          {buttonText || "Continue"} 
+          {/* <TextArrow /> */}
         </SafeButton>
       </div>
     </div>

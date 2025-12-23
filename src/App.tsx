@@ -13,12 +13,14 @@ import Intro from './pages/Intro';
 import ScrollToTop from './components/ScrollToTop';
 import Veganism from './pages/Veganism';
 import Ethics from './pages/Ethics';
+import { Toaster } from 'sonner';
+import Restaurants from './pages/Restaurants';
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
+      <div className="min-h-screen">
         {/* <Navigation /> */}
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -28,10 +30,12 @@ function App() {
           <Route path="/health" element={<Health />} />
           <Route path="/shopping" element={<Shopping />} />
           <Route path="/recipes" element={<Recipes />} />
+          <Route path="/restaurants" element={<Restaurants />} />
           <Route path="/environment" element={<Environment />} />
           <Route path="/beginner-tips" element={<BeginnerTips />} />
           <Route path="/activism" element={<Activism />} />
         </Routes>
+        <Toaster />
         <Footer />
       </div>
     </Router>

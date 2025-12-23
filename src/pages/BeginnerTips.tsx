@@ -1,108 +1,138 @@
-import React from 'react';
-import { Compass, Target, Calendar, CheckCircle, AlertCircle, Star, Leaf } from 'lucide-react';
-import LinkToHomepage from '../components/LinkToHomeCard';
-import { Link } from 'react-router-dom';
-import { HeadingImage } from '../components/HeadingImage';
-import headingImage from '../assets/img/chapter8.jpg'
+import React from "react";
+import {
+  Compass,
+  Target,
+  Calendar,
+  CheckCircle,
+  AlertCircle,
+  Star,
+  Leaf,
+} from "lucide-react";
+import LinkToHomepage from "../components/LinkToHomeCard";
+import { Link } from "react-router-dom";
+import { HeadingImage } from "../components/HeadingImage";
+import headingImage from "../assets/img/chapter8.jpg";
+import { motion, type Transition } from "framer-motion";
 
 const BeginnerTips = () => {
-  const title = 'Savjeti za početnike'
+  const title = "Savjeti za početnike";
+  const revealProps: {
+    initial: { opacity: number; y: number };
+    whileInView: { opacity: number; y: number };
+    transition: Transition;
+    viewport: { once: boolean; amount: number };
+  } = {
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut" },
+    viewport: { once: true, amount: 0.2 },
+  };
   const weeklyPlan = [
     {
-      week: 'Tjedan 1-2',
-      title: 'Postepeni prelazak',
+      week: "Tjedan 1-2",
+      title: "Postepeni prelazak",
       goals: [
-        'Zamijenite mlijeko biljnom alternativom',
-        'Probajte veganske verzije omiljenih jela',
-        'Otkrijte nova veganska brandova',
-        'Čitajte etikete proizvoda'
+        "Zamijenite mlijeko biljnom alternativom",
+        "Probajte veganske verzije omiljenih jela",
+        "Otkrijte nova veganska brandova",
+        "Čitajte etikete proizvoda",
       ],
-      color: 'bg-green-100 text-green-800'
+      color: "bg-green-100 text-green-800",
     },
     {
-      week: 'Tjedan 3-4',
-      title: 'Proširivanje izbora',
+      week: "Tjedan 3-4",
+      title: "Proširivanje izbora",
       goals: [
-        'Uklonite meso iz 3-4 obroka tjedno',
-        'Naučite osnovne veganske recepte',
-        'Pronađite veganske restorane',
-        'Pripremite si veganske grickalice'
+        "Uklonite meso iz 3-4 obroka tjedno",
+        "Naučite osnovne veganske recepte",
+        "Pronađite veganske restorane",
+        "Pripremite si veganske grickalice",
       ],
-      color: 'bg-blue-100 text-blue-800'
+      color: "bg-blue-100 text-blue-800",
     },
     {
-      week: 'Tjedan 5-6',
-      title: 'Dublje razumijevanje',
+      week: "Tjedan 5-6",
+      title: "Dublje razumijevanje",
       goals: [
-        'Uklonite sve životinjske proizvode',
-        'Planirajte obruke unaprijed',
-        'Učite o veganskoj nutriciji',
-        'Pripremite obroke za cijeli dan'
+        "Uklonite sve životinjske proizvode",
+        "Planirajte obruke unaprijed",
+        "Učite o veganskoj nutriciji",
+        "Pripremite obroke za cijeli dan",
       ],
-      color: 'bg-purple-100 text-purple-800'
+      color: "bg-purple-100 text-purple-800",
     },
     {
-      week: 'Tjedan 7-8',
-      title: 'Stabilizacija',
+      week: "Tjedan 7-8",
+      title: "Stabilizacija",
       goals: [
-        'Budite potpuno vegan',
-        'Otkrijte nove okuse i teksture',
-        'Spojite se s vegan zajednicom',
-        'Educite obitelj i prijatelje'
+        "Budite potpuno vegan",
+        "Otkrijte nove okuse i teksture",
+        "Spojite se s vegan zajednicom",
+        "Educite obitelj i prijatelje",
       ],
-      color: 'bg-orange-100 text-orange-800'
-    }
+      color: "bg-orange-100 text-orange-800",
+    },
   ];
 
   const commonChallenges = [
     {
-      challenge: 'Manjak proteina',
-      solution: 'Kombinirajte različite biljne izvore proteina kroz dan',
+      challenge: "Manjak proteina",
+      solution: "Kombinirajte različite biljne izvore proteina kroz dan",
       icon: Target,
-      color: 'text-red-500'
+      color: "text-red-500",
     },
     {
-      challenge: 'Dosadni obroci',
-      solution: 'Eksperimentirajte s novim začinima, sojevima i tehnikama kuhanja',
+      challenge: "Dosadni obroci",
+      solution:
+        "Eksperimentirajte s novim začinima, sojevima i tehnikama kuhanja",
       icon: Star,
-      color: 'text-yellow-500'
+      color: "text-yellow-500",
     },
     {
-      challenge: 'Društvene situacije',
-      solution: 'Pripremi se unaprijed, donesi vlastiti obrok ili jedi prije izlaska',
+      challenge: "Društvene situacije",
+      solution:
+        "Pripremi se unaprijed, donesi vlastiti obrok ili jedi prije izlaska",
       icon: AlertCircle,
-      color: 'text-blue-500'
+      color: "text-blue-500",
     },
     {
-      challenge: 'Visoka cijena',
-      solution: 'Fokusiraj se na osnove: mahunarke, žitarice, sezonsko voće i povrće',
+      challenge: "Visoka cijena",
+      solution:
+        "Fokusiraj se na osnove: mahunarke, žitarice, sezonsko voće i povrće",
       icon: CheckCircle,
-      color: 'text-green-500'
-    }
+      color: "text-green-500",
+    },
   ];
 
   const shoppingList = [
     {
-      category: 'Proteini',
-      items: ['Leća', 'Grah', 'Tofu', 'Tempeh', 'Quinoa', 'Orašasti plodovi']
+      category: "Proteini",
+      items: ["Leća", "Grah", "Tofu", "Tempeh", "Quinoa", "Orašasti plodovi"],
     },
     {
-      category: 'Ugljikohidrati',
-      items: ['Smeđa riža', 'Zobene pahuljice', 'Krumpir', 'Slatki krumpir', 'Tjestenina']
+      category: "Ugljikohidrati",
+      items: [
+        "Smeđa riža",
+        "Zobene pahuljice",
+        "Krumpir",
+        "Slatki krumpir",
+        "Tjestenina",
+      ],
     },
     {
-      category: 'Povrće',
-      items: ['Špinat', 'Brokula', 'Mrkva', 'Paprika', 'Rajčice', 'Avokado']
+      category: "Povrće",
+      items: ["Špinat", "Brokula", "Mrkva", "Paprika", "Rajčice", "Avokado"],
     },
     {
-      category: 'Voće',
-      items: ['Banane', 'Borovnice', 'Jabuke', 'Naranče', 'Grožđe', 'Mango']
-    }
+      category: "Voće",
+      items: ["Banane", "Borovnice", "Jabuke", "Naranče", "Grožđe", "Mango"],
+    },
   ];
 
   return (
-    <div className="min-h-screen">
-              <header className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-600 dark:to-emerald-700/70">
+    <div className="bg-gradient-to-b from-green-50 to-emerald-50">
+      <header>
+      <div className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-600 dark:to-emerald-700/70">
         <Link to="/">
           <div className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
             <Leaf className="h-6 w-6 text-primary animate-pulse text-emerald-700" />
@@ -113,10 +143,13 @@ const BeginnerTips = () => {
             </span>
           </div>
         </Link>
+        </div>
+        <motion.div {...revealProps}>
+          <HeadingImage image={headingImage} title={title} />
+        </motion.div>
       </header>
 
       <main className="flex-1 container max-w-4xl mx-auto p-4 md:p-8 flex flex-col gap-8">
-        <HeadingImage image={headingImage} title={title} />
 
         {/* Header */}
         {/* <div className="text-center mb-16">
@@ -156,11 +189,16 @@ const BeginnerTips = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {weeklyPlan.map((week, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div
+                key={index}
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
                 <div className="flex items-center mb-4">
                   <Calendar className="h-6 w-6 text-emerald-600 mr-3" />
                   <div>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${week.color}`}>
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-medium ${week.color}`}
+                    >
                       {week.week}
                     </span>
                     <h3 className="text-xl font-semibold text-gray-800 mt-2">
@@ -182,7 +220,7 @@ const BeginnerTips = () => {
         </div>
 
         {/* Common Challenges */}
-        <div className="mb-16">
+        <motion.div {...revealProps} className="mb-16">
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
             Česti izazovi i rješenja
           </h2>
@@ -204,10 +242,10 @@ const BeginnerTips = () => {
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
         {/* Shopping List */}
-        <div className="mb-16 bg-emerald-50 rounded-2xl p-8">
+        {/* <motion.div {...revealProps} className="mb-16 bg-emerald-50 rounded-2xl p-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
             Lista za kupovinu početnika
           </h2>
@@ -227,10 +265,10 @@ const BeginnerTips = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div> */}
 
         {/* Quick Tips */}
-        <div className="mb-16">
+        <motion.div {...revealProps} className="mb-16">
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
             Brzi savjeti za uspjeh
           </h2>
@@ -262,14 +300,12 @@ const BeginnerTips = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Call to Action */}
-        <div className="bg-gradient-to-r from-emerald-600 to-green-600 rounded-2xl p-8 text-center text-white">
+        <motion.div {...revealProps} className="bg-gradient-to-r from-emerald-600 to-green-600 rounded-2xl p-8 text-center text-white">
+          <h2 className="text-3xl font-bold mb-4">Spremni za početak?</h2>
           <h2 className="text-3xl font-bold mb-4">
-            Spremni za početak?
-          </h2>
-                    <h2 className="text-3xl font-bold mb-4">
             Ovdje bi išao poziv na volontiranje
           </h2>
           {/* <p className="text-xl mb-6 max-w-2xl mx-auto">
@@ -290,7 +326,7 @@ const BeginnerTips = () => {
               Učite o nutriciji
             </a>
           </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );

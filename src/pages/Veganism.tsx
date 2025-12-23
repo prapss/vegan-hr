@@ -4,13 +4,16 @@ import { Link } from "react-router-dom";
 import {
   Heart,
   Shield,
-  Scale as Scales,
+  Scale,
   Shrub,
   ChevronDown,
   ArrowRight,
   Sparkles,
   HandHeart,
   Leaf,
+  EyeOff,
+  Layers,
+  Eye,
 } from "lucide-react";
 import ExpandableCard from "../components/ExpandableCard";
 import UltraModernCTA, {
@@ -60,15 +63,19 @@ function Card({
 }
 
 const Veganism = () => {
-  const definition = `Veganstvo je način života koji nastoji isključiti, koliko god je to moguće i izvedivo, sve oblike iskorištavanja i okrutnosti prema životinjama, bilo za hranu, odjeću ili bilo koju drugu svrhu. To uključuje izbjegavanje konzumacije životinjskih proizvoda poput mesa, mliječnih proizvoda, jaja i meda, kao i izbjegavanje proizvoda testiranih na životinjama ili izrađenih od životinjskih materijala poput kože, krzna i svile. Veganstvo se temelji na etičkim, okolišnim i zdravstvenim razlozima, promovirajući suosjećanje prema svim živim bićima i održiviji način života.`;
+  // const definition = `Veganstvo je način života koji nastoji isključiti, koliko god je to moguće i izvedivo, sve oblike iskorištavanja i okrutnosti prema životinjama, bilo za hranu, odjeću ili bilo koju drugu svrhu. To uključuje izbjegavanje konzumacije životinjskih proizvoda poput mesa, mliječnih proizvoda, jaja i meda, kao i izbjegavanje proizvoda testiranih na životinjama ili izrađenih od životinjskih materijala poput kože, krzna i svile. Veganstvo se temelji na etičkim, okolišnim i zdravstvenim razlozima, promovirajući suosjećanje prema svim živim bićima i održiviji način života.`;
+  const definitionPartOne = `Veganstvo je način života baziran na empatiji, pravdi i poštivanju životinja... svjestan izbor da živimo tako da ne nanosimo patnju i ne iskorištavamo životinje ni za hranu, ni za odjeću, kozmetiku, zabavu ili bilo koju drugu svrhu.`;
+  const definitionPartTwo =
+    "Biti vegan znači gledati svijet očima suosjećanja i prepoznati da svaka životinja ima svoju osobnost, osjećaje i pravo na život bez straha i patnje. Veganstvo nije samo prehrana, nego način života koji uključuje etiku, zdravlje i brigu za planet.";
   const principles = [
     {
       title: "Poštivanje životinja",
       // description: 'Svaka životinja ima pravo na život bez patnje i eksploatacije.',
       shortDescription:
-        "Veganstvo je način života baziran na empatiji, ljubavi i poštivanju svih živih bića.",
+        "Veganstvo je način života baziran na empatiji, ljubavi i poštivanju svih bića.",
       description:
-        "Veganstvo je način života baziran na empatiji, ljubavi i poštivanju svih živih bića. Svjestan izbor da živimo tako da ne nanosimo patnju i ne iskorištavamo životinje ni za hranu, ni za odjeću, kozmetiku, zabavu ili bilo koju drugu svrhu. Biti vegan znači gledati svijet očima suosjećanja i prepoznati da svaka životinja ima svoju osobnost, osjećaje i pravo na život bez straha i patnje. Veganstvo nije samo prehrana, nego način života koji uključuje etiku, zdravlje i brigu za planet.",
+        // "Veganstvo je način života baziran na empatiji, ljubavi i poštivanju svih živih bića. Svjestan izbor da živimo tako da ne nanosimo patnju i ne iskorištavamo životinje ni za hranu, ni za odjeću, kozmetiku, zabavu ili bilo koju drugu svrhu. Biti vegan znači gledati svijet očima suosjećanja i prepoznati da svaka životinja ima svoju osobnost, osjećaje i pravo na život bez straha i patnje. Veganstvo nije samo prehrana, nego način života koji uključuje etiku, zdravlje i brigu za planet.",
+        "Veganski način života temelji se na suosjećanju, pravdi i poštovanju prema životinjama. Kada biramo ne koristiti životinje za hranu, odjeću ili zabavu, zapravo biramo ne sudjelovati u njihovoj patnji i iskorištavanju. Svaka životinja ima svoj život, svoje osjećaje, strahove i želje, baš kao i mi. Biti vegan znači prepoznati da život drugih živih bića ima vrijednost neovisno o našim potrebama. To je čin ljubavi, svijesti i odgovornosti.",
       icon: Heart,
       color: "text-red-500",
     },
@@ -101,8 +108,8 @@ const Veganism = () => {
           link: "https://pubmed.ncbi.nlm.nih.gov/29174030/",
         },
         {
-          text: "British Dietetic Association: Vegetarian, vegan and plant-based diets",
-          link: "https://www.bda.uk.com/resource/vegetarian-vegan-plant-based-diet.html",
+          text: "PubMed: Health outcomes of shifting from a traditional to a vegan Mediterranean diet in healthy men",
+          link: "https://pubmed.ncbi.nlm.nih.gov/39358106",
         },
       ],
       icon: Shield,
@@ -169,9 +176,13 @@ const Veganism = () => {
 
   const title = "Što je veganstvo?";
   return (
-    <>
-      <header className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-600 dark:to-emerald-700/70">
-        <Link to="/" className='flex items-center space-x-2 text-2xl font-bold text-emerald-700 hover:text-emerald-500 transition-colors'>
+    <div className="bg-gradient-to-b from-green-50 to-emerald-50">
+      <header>
+        <div className="p-4 flex justify-between items-center top-0 backdrop-blur-sm z-10 border-b border-border/50 bg-gradient-to-r from-accentnice to-emerald-50 dark:from-emerald-800 dark:via-emerald-600 dark:to-emerald-700/70">
+        <Link
+          to="/"
+          className="flex items-center space-x-2 text-2xl font-bold text-emerald-700 hover:text-emerald-500 transition-colors"
+        >
           <div className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
             <Leaf className="h-8 w-8 animate-pulse text-emerald-700" />
             <span>
@@ -181,36 +192,42 @@ const Veganism = () => {
             </span>
           </div>
         </Link>
+        </div>
+        <HeadingImage image={headingImage} title={title} />
+
       </header>
 
       <main className="flex-1 container max-w-4xl mx-auto p-4 md:p-8 flex flex-col gap-8">
-                <motion.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-        <HeadingImage image={headingImage} title={title} />
 
-        {/* Definition Section */}
-        {/* <div className="break-inside-avoid p-4 rounded-xl border border-white/5 bg-card backdrop-blur-sm shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl"> */}
-        {/* <h2 className="text-3xl font-bold tracking-tight text-center mb-2">Definicija</h2>  */}
-          <p className="text-lg  max-w-4xl mx-auto leading-relaxed mt-6">
-            {definition}
-          </p>
-        {/* </div> */}
-        {/* Ethical Principles Expandable*/}
-        <section className="container mx-auto px-4 py-0 md:py-0 mb-22 mt-12">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="text-center space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight">
-                Dobrobiti veganstva
-              </h2>
-              {/* 
+          {/* Definition Section */}
+          <div className="break-inside-avoid p-4  mt-6 bg-white/60 rounded-xl border border-white/5 backdrop-blur-sm shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl">
+            {/* <h2 className="text-3xl font-bold tracking-tight text-center mb-2">Definicija</h2>  */}
+            <p className="text-lg  max-w-4xl mx-auto leading-relaxed">
+              {definitionPartOne}
+            </p>
+            <p className="text-lg  max-w-4xl mx-auto leading-relaxed mt-6">
+              {definitionPartTwo}
+            </p>
+          </div>
+
+          {/* Ethical Principles Expandable*/}
+          <section className="container mx-auto px-4 py-0 md:py-0 mb-22 mt-12">
+            <div className="max-w-3xl mx-auto space-y-6">
+              <div className="text-center space-y-4">
+                <h2 className="text-3xl font-bold tracking-tight">
+                  Dobrobiti veganstva
+                </h2>
+                {/* 
                 <p className="text-lg text-muted-foreground text-pretty">
                 Click each card to discover why this moment matters
                 </p> */}
-            </div>
-            {/* 
+              </div>
+              {/* 
               <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20">
                 <div className="container mx-auto px-1 py-2 ">
                   <div className="max-w-4xl mx-auto text-center space-y-6">
@@ -227,39 +244,82 @@ const Veganism = () => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-glow" />
               </section> */}
 
-            <div className="space-y-4">
-              {principles.map((principle, index) => (
-                <ExpandableCard
-                  key={index + 1}
-                  index={index}
-                  fullDescription={principle.description}
-                  shortDescription={principle.shortDescription}
-                  references={principle.references}
-                  title={principle.title}
-                  icon={principle.icon}
-                  color={principle.color}
-                />
-              ))}
+              <div className="space-y-4">
+                {principles.map((principle, index) => (
+                  <ExpandableCard
+                    key={index + 1}
+                    index={index}
+                    fullDescription={principle.description}
+                    shortDescription={principle.shortDescription}
+                    references={principle.references}
+                    title={principle.title}
+                    icon={principle.icon}
+                    color={principle.color}
+                  />
+                ))}
+              </div>
             </div>
+          </section>
+
+          {/* Key Definitions Section */}
+          <section className="container mx-auto px-4 py-0 md:py-0 mb-8 mt-16">
+            <div className="max-w-3xl mx-auto space-y-6">
+              <div className="text-center space-y-4">
+                <h2 className="text-3xl font-bold tracking-tight">
+                  Dva pojma za koja bi se trebalo znati
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  {/* Kratke definicije ključnih termina povezanih s veganstvom. */}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1  gap-4">
+                <ExpandableCard
+                  key="def-carnism"
+                  index={100}
+                  title="Karnizam"
+                  shortDescription="Ideologija koja normalizira i opravdava konzumaciju određenih životinja."
+                  // fullDescription="Karnizam je termin koji je skovala psihologinja Melanie Joy i opisuje nevidljivu ideologiju zbog koje ljudi smatraju normalnim, prirodnim i nužnim jesti određene životinje. Karnizam objašnjava kako kulturni, institucionalni i emocionalni faktori oblikuju naše prehrambene navike te kako taj sustav omogućava i skriva patnju životinja."
+                  fullDescription="Karnizam je društveno uvjetovana ideologija koja opravdava i normalizira iskorištavanje i konzumaciju određenih životinja, dok se druge štite, i to kroz uvjerenja da je takva praksa prirodna, nužna i normalna."
+                  // Djeluje uglavnom nevidljivo, oblikujući navike, moralne stavove i emocionalne reakcije ljudi prema životinjama.
+                  icon={EyeOff}
+                  color="text-pink-500"
+                />
+
+                <ExpandableCard
+                  key="def-speciesism"
+                  index={101}
+                  title="Specizam"
+                  shortDescription="Vjerovanje da su interesi jedne vrste važniji od interesa drugih vrsta."
+                  // fullDescription="Specizam je oblik pristranosti u kojem se ljudska bića smatraju superiornima u odnosu na druge vrste, često opravdavajući iskorištavanje životinja. Slično rasizmu i seksizmu, specizam odbacuje moralnu jednaku vrijednost interesa drugih vrsta i omogućava diskriminaciju i eksploataciju."
+                  // Specizam je diskriminacija živih bića na temelju njihove pripadnosti određenoj vrsti, najčešće davanje veće vrijednosti ljudima nego životinjama.
+                  fullDescription="Specizam je oblik diskriminacije ili predrasude prema bićima na temelju njihove pripadnosti određenoj vrsti. Najčešće se odnosi na uvjerenje da su ljudi inherentno vrjedniji od ostalih životinja, pa se interesi životinja zanemaruju ili smatraju manje važnima."
+                  icon={Scale}
+                  color="text-yellow-500"
+                />
+              </div>
+            </div>
+          </section>
+            
+
+          
+          {/* Fun Facts Section */}
+          <h2 className="text-3xl font-bold mb-8 text-center pt-16">
+            Zanimljive činjenice
+          </h2>
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-2">
+            {facts.map((fact, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true }}
+              >
+                <Card key={index} title={fact.title} value={fact.fact} />
+              </motion.div>
+            ))}
           </div>
-        </section>
-        {/* Fun Facts Section */}
-        <h2 className="text-3xl font-bold mb-8 text-center pt-16">
-          Zanimljive činjenice
-        </h2>
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-2">
-          {facts.map((fact, index) => (
-                        <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              viewport={{ once: true }}
-            >
-            <Card key={index} title={fact.title} value={fact.fact} />
-            </motion.div>
-          ))}
-        </div>
         </motion.div>
       </main>
 
@@ -280,16 +340,32 @@ const Veganism = () => {
         buttonLink={"/recipes"}
         image={nextChapterImage}  
       /> */}
-      <CTASectionGlass
+      {/* <CTASectionGlass
         title={"Nastavi svoje putovanje"}
         description={
-          "Istraži zdravstvene aspekte veganstva i kako možeš poboljšati svoje zdravlje."
+          "Zaroni dublje u etičke temelje veganstva."
         }
         buttonText="Dalje ➔"
         buttonLink={"/ethics"}
 
-      />
-{/* 
+      /> */}
+
+      <section className=" space-y-6 mx-auto mt-16 ">
+        <div className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-600 p-8 text-center text-white">
+          <h2 className="text-3xl font-bold mb-4">Doznaj zbog koga?</h2>
+          <p className="text-xl mb-6 max-w-2xl mx-auto">
+            Doznaj zbog koga je ovo važno?
+          </p>
+          <Link
+            to="/ethics"
+            className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-50 transition-all duration-300 transform hover:scale-105 shadow-lg inline-block"
+          >
+            Dalje
+            <ArrowRight className="inline text-xl text-primary h-5 w-5 ml-1" />
+          </Link>
+        </div>
+      </section>
+      {/* 
       <CTASectionNeon
         title={"Istraži više o veganstvu"}
         description={
@@ -298,9 +374,7 @@ const Veganism = () => {
         buttonText="Započni ➔"
         buttonLink={"/ethics"}
       /> */}
-
-      
-    </>
+    </div>
   );
 };
 

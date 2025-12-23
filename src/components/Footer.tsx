@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <Leaf className="h-8 w-8 text-emerald-300" />
-              <span className="text-2xl font-bold">Veganski Portal</span>
+              <span className="text-2xl font-bold">Vegan.hr</span>
             </div>
             <p className="text-emerald-100 mb-4 max-w-md">
               Vaš pouzdani vodič kroz veganski način života. Otkrijte zdravlje, 
@@ -36,7 +36,7 @@ const Footer = () => {
             <div className="space-y-2 text-emerald-100">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <span>info@veganski-portal.hr</span>
+                <span>info@vegan.hr</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" />

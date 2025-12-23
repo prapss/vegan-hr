@@ -30,7 +30,7 @@ export default function ExpandableCard({
 
   return (
     <div
-      className="group border-2 border-green-500/50 rounded-xl overflow-hidden bg-card hover:border-accentnice hover:shadow-xl hover:shadow-primary/20 transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:scale-[1.02]"
+      className="group border-2 border-green-500/50 rounded-xl overflow-hidden bg-white/70 hover:border-accentnice hover:shadow-xl hover:shadow-primary/20 transition-all duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:scale-[1.02]"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <button
