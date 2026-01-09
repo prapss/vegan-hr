@@ -15,6 +15,7 @@ import Veganism from './pages/Veganism';
 import Ethics from './pages/Ethics';
 import { Toaster } from 'sonner';
 import Restaurants from './pages/Restaurants';
+import BeginnerTips2 from './pages/BeginnerTips2';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/restaurants" element={<Restaurants />} />
           <Route path="/environment" element={<Environment />} />
           <Route path="/beginner-tips" element={<BeginnerTips />} />
+          <Route path="/beginner-tips2" element={<BeginnerTips2 />} />
           <Route path="/activism" element={<Activism />} />
         </Routes>
         <Toaster />

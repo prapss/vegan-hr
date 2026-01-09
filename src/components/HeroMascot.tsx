@@ -117,7 +117,7 @@ export default function Hero({
               aria-hidden="true"
               className="
                 md:hidden
-                absolute left-28 top-32 -translate-x-1/2 -translate-y-1/2
+                absolute left-28 top-40 -translate-x-1/2 -translate-y-1/2
                 h-3 w-3 rotate-45
                 bg-white/70 border border-t-black/5 shadow-sm backdrop-blur-md
                 -z-10
@@ -141,7 +141,7 @@ export default function Hero({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, ease: "easeIn" }}
           >
-            <h1 className="text-4xl leading-9 text-center mt-8 my-6 md:text-5xl font-bold font-[SuperJoyful] drop-shadow-md text-gray-800">
+            <h1 className="text-[3.5rem] leading-10 text-center mt-8 my-6 md:text-5xl font-bold font-[SuperJoyful] drop-shadow-md text-gray-800">
               Tvoj vodič kroz
               <span className="text-green-600 block m-0">
                 svijet veganstva
@@ -157,7 +157,7 @@ export default function Hero({
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 0.5, ease: "easeOut", delay: 1.2 }}
             >
-              <p className="text-[0.6rem] mt-8 mr-3 ml-28 md:text-2xl text-gray-600 min-w-56 px-2 py-1 leading-relaxed border border-black/5 rounded-xl bg-white/70">
+              <p className="text-[0.8rem] mt-12 mr-3 ml-28 md:text-2xl text-gray-600 min-w-56 px-2 py-1 leading-relaxed border border-black/5 rounded-xl bg-white/70">
               Otkrij kako veganstvo može transformirati vaše
               zdravlje, zaštititi planet i stvoriti etičniji svijet za sva žive
               bića.
